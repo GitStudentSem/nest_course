@@ -33,6 +33,7 @@ export class UsersController {
 	@Post()
 	createUser(@Body() user: CreateUserDto): string {
 		// usersService.createUser(user);
+		console.log("user", user);
 		return `A new user has been created. ID: ${user.id}`;
 	}
 }
