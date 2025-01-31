@@ -1,7 +1,7 @@
-export interface IUser {
+export class CreateUserDto {
 	id: number;
 	name: string;
-	email: string;
 	gender: string;
+	email: string;
 	isMarried: boolean;
 }

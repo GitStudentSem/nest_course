@@ -32,7 +32,7 @@ export class UsersController {
 		const user: IUser = {
 			id: 3,
 			name: "Alex",
-			age: 33,
+			email: "alex@yandex.ru",
 			gender: "male",
 			isMarried: false,
 		};
