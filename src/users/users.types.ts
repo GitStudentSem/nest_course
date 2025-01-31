@@ -2,6 +2,6 @@ export interface IUser {
 	id: number;
 	name: string;
 	email: string;
-	gender: string;
+	gender?: string;
 	isMarried: boolean;
 }

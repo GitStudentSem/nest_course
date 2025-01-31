@@ -4,6 +4,7 @@ import {
 	DefaultValuePipe,
 	Get,
 	Param,
+	ParseBoolPipe,
 	ParseIntPipe,
 	Post,
 	Query,
@@ -12,16 +13,20 @@ import {
 import { IUser } from "./users.types";
 import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dtos/create-user.dto";
+import { GetUserParamDto } from "./dtos/get-user-param.dto";
 
 const usersService = new UsersService();
 
 @Controller("users")
 export class UsersController {
+	//":isMarried?"
 	@Get()
 	getUsers(
 		@Query("limit", new DefaultValuePipe(10), ParseIntPipe) limit: number,
 		@Query("page", new DefaultValuePipe(1), ParseIntPipe) page: number,
+		@Param() param: GetUserParamDto,
 	): IUser[] {
+		console.log("param", param);
 		return usersService.getAllUsers();
 	}
 
