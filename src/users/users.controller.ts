@@ -6,6 +6,7 @@ import {
 	Param,
 	ParseBoolPipe,
 	ParseIntPipe,
+	Patch,
 	Post,
 	Query,
 	ValidationPipe,
@@ -14,6 +15,7 @@ import { IUser } from "./users.types";
 import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dtos/create-user.dto";
 import { GetUserParamDto } from "./dtos/get-user-param.dto";
+import { UpdateUserDto } from "./dtos/update-user.dto";
 
 const usersService = new UsersService();
 
@@ -43,5 +45,11 @@ export class UsersController {
 		// usersService.createUser(user);
 		console.log("user", user);
 		return `A new user has been created. ID: ${user.id}`;
+	}
+
+	@Patch()
+	updateUser(@Body() user: UpdateUserDto): string {
+		console.log("user", user);
+		return "User updated successfully";
 	}
 }
