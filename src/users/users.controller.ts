@@ -4,12 +4,10 @@ import {
 	DefaultValuePipe,
 	Get,
 	Param,
-	ParseBoolPipe,
 	ParseIntPipe,
 	Patch,
 	Post,
 	Query,
-	ValidationPipe,
 } from "@nestjs/common";
 import { IUser } from "./users.types";
 import { UsersService } from "./users.service";
@@ -17,13 +15,12 @@ import { CreateUserDto } from "./dtos/create-user.dto";
 import { GetUserParamDto } from "./dtos/get-user-param.dto";
 import { UpdateUserDto } from "./dtos/update-user.dto";
 
-const usersService = new UsersService();
-
 @Controller("users")
 export class UsersController {
+	constructor(private usersService: UsersService) {}
+
 	// Вместо этого
 	// @Get(":isMarried?")
-
 	//? вероятно это не правильно, нужно разбираться
 	@Get("{:isMarried}")
 	getUsers(
@@ -32,17 +29,17 @@ export class UsersController {
 		@Param() param: GetUserParamDto,
 	): IUser[] {
 		console.log("param", param);
-		return usersService.getAllUsers();
+		return this.usersService.getAllUsers();
 	}
 
 	@Get(":id")
 	getUserById(@Param("id", ParseIntPipe) id: number): IUser | undefined {
-		return usersService.getUserById(id);
+		return this.usersService.getUserById(id);
 	}
 
 	@Post()
 	createUser(@Body() user: CreateUserDto): string {
-		// usersService.createUser(user);
+		// this.usersService.createUser(user);
 		console.log("user", user);
 		return `A new user has been created. ID: ${user.id}`;
 	}

@@ -1,5 +1,7 @@
+import { Injectable } from "@nestjs/common";
 import type { IUser } from "./users.types";
 
+@Injectable()
 export class UsersService {
 	users: IUser[] = [
 		{
