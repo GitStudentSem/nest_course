@@ -19,8 +19,11 @@ const usersService = new UsersService();
 
 @Controller("users")
 export class UsersController {
-	//":isMarried?"
-	@Get()
+	// Вместо этого
+	// @Get(":isMarried?")
+
+	//? вероятно это не правильно, нужно разбираться
+	@Get("{:isMarried}")
 	getUsers(
 		@Query("limit", new DefaultValuePipe(10), ParseIntPipe) limit: number,
 		@Query("page", new DefaultValuePipe(1), ParseIntPipe) page: number,
