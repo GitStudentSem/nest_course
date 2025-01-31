@@ -1,4 +1,5 @@
 import {
+	IsBoolean,
 	IsEmail,
 	IsNotEmpty,
 	IsOptional,
@@ -21,5 +22,6 @@ export class CreateUserDto {
 	@IsEmail()
 	email: string;
 
+	@IsBoolean()
 	isMarried: boolean;
 }
