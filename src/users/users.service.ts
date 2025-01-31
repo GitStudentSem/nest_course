@@ -4,10 +4,10 @@ export class UsersService {
 	users: IUser[] = [
 		{
 			id: 1,
-			name: "John",
-			age: 28,
-			gender: "male",
-			isMarried: true,
+			name: "Lisa",
+			age: 23,
+			gender: "female",
+			isMarried: false,
 		},
 		{
 			id: 2,
@@ -15,6 +15,13 @@ export class UsersService {
 			age: 25,
 			gender: "male",
 			isMarried: false,
+		},
+		{
+			id: 3,
+			name: "John",
+			age: 30,
+			gender: "male",
+			isMarried: true,
 		},
 	];
 
