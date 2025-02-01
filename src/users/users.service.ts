@@ -1,8 +1,13 @@
-import { Injectable } from "@nestjs/common";
+import { forwardRef, Inject, Injectable } from "@nestjs/common";
 import { CreateUserDto } from "./dtos/create-user.dto";
+import { AuthService } from "src/auth/auth.service";
 
 @Injectable()
 export class UsersService {
+	constructor(
+		@Inject(forwardRef(() => AuthService))
+		private readonly authService: AuthService,
+	) {}
 	users: CreateUserDto[] = [
 		{
 			id: 1,
@@ -10,6 +15,7 @@ export class UsersService {
 			email: "lisa@yandex.ru",
 			gender: "female",
 			isMarried: false,
+			password: "lisa123",
 		},
 		{
 			id: 2,
@@ -17,6 +23,7 @@ export class UsersService {
 			email: "semyon@yandex.ru",
 			gender: "male",
 			isMarried: false,
+			password: "semyon123",
 		},
 		{
 			id: 3,
@@ -24,11 +31,13 @@ export class UsersService {
 			email: "john@yandex.ru",
 			gender: "male",
 			isMarried: true,
+			password: "john123",
 		},
 	];
 
-	getAllUsers(): CreateUserDto[] {
-		return this.users;
+	getAllUsers(): string | CreateUserDto[] {
+		if (this.authService.isAuthenticated) return this.users;
+		return "You are mot logged";
 	}
 
 	getUserById(id: number): CreateUserDto | undefined {

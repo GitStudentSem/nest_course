@@ -26,13 +26,15 @@ export class UsersController {
 		@Query("limit", new DefaultValuePipe(10), ParseIntPipe) limit: number,
 		@Query("page", new DefaultValuePipe(1), ParseIntPipe) page: number,
 		@Param() param: GetUserParamDto,
-	): CreateUserDto[] {
+	): string | CreateUserDto[] {
 		console.log("param", param);
 		return this.usersService.getAllUsers();
 	}
 
 	@Get(":id")
-	getUserById(@Param("id", ParseIntPipe) id: number): CreateUserDto | undefined {
+	getUserById(
+		@Param("id", ParseIntPipe) id: number,
+	): CreateUserDto | undefined {
 		return this.usersService.getUserById(id);
 	}
 
