@@ -42,7 +42,7 @@ export class UsersController {
 	createUser(@Body() user: CreateUserDto): string {
 		// this.usersService.createUser(user);
 		console.log("user", user);
-		return `A new user has been created. ID: ${user.id}`;
+		return `A new user has been created. ID: ${user.firstName}`;
 	}
 
 	@Patch()

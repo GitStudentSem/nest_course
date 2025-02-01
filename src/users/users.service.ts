@@ -10,27 +10,24 @@ export class UsersService {
 	) {}
 	users: CreateUserDto[] = [
 		{
-			id: 1,
-			name: "Lisa",
+			firstName: "Lisa",
+			lastName: "Lastnamovich",
 			email: "lisa@yandex.ru",
 			gender: "female",
-			isMarried: false,
 			password: "lisa123",
 		},
 		{
-			id: 2,
-			name: "Semyon",
+			firstName: "Semyon",
+			lastName: "Lastnamovich",
 			email: "semyon@yandex.ru",
 			gender: "male",
-			isMarried: false,
 			password: "semyon123",
 		},
 		{
-			id: 3,
-			name: "John",
+			firstName: "John",
+			lastName: "Lastnamovich",
 			email: "john@yandex.ru",
 			gender: "male",
-			isMarried: true,
 			password: "john123",
 		},
 	];
@@ -40,8 +37,8 @@ export class UsersService {
 		return "You are mot logged";
 	}
 
-	getUserById(id: number): CreateUserDto | undefined {
-		return this.users.find((user) => user.id === id);
+	getUserById(id: number): undefined {
+		// return this.users.find((user) => user.id === id);
 	}
 
 	createUser(user: CreateUserDto) {

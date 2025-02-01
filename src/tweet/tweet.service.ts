@@ -22,12 +22,13 @@ export class TweetService {
 		{ text: "some tweet 3", date: new Date("2023-11-12"), userId: 2 },
 	];
 
-	getTweets(userId: number): ITweetWithName[] {
-		const user = this.usersService.getUserById(userId);
-		const tweets = this.tweets.filter((tweet) => tweet.userId === userId);
-		const response = tweets.map((tweet) => {
-			return { text: tweet.text, date: tweet.date, name: user?.name };
-		});
-		return response;
+	getTweets(userId: number): string {
+		// const user = this.usersService.getUserById(userId);
+		// const tweets = this.tweets.filter((tweet) => tweet.userId === userId);
+		// const response = tweets.map((tweet) => {
+		// 	return { text: tweet.text, date: tweet.date, name: user.firstName };
+		// });
+		// return response;
+		return "get tweets";
 	}
 }
