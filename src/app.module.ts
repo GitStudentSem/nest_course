@@ -6,6 +6,7 @@ import { UsersModule } from "./users/users.module";
 import { AuthModule } from "./auth/auth.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { User } from "./users/user.entity";
+import { ProfileModule } from './profile/profile.module';
 
 @Module({
 	/** Внутренние использованные модули */
@@ -27,6 +28,7 @@ import { User } from "./users/user.entity";
 				database: "nestjs",
 			}),
 		}),
+		ProfileModule,
 	],
 	/** Отвечает за прослушку запросов */
 	controllers: [AppController],
