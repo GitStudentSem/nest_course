@@ -18,36 +18,13 @@ import { UpdateUserDto } from "./dtos/update-user.dto";
 export class UsersController {
 	constructor(private usersService: UsersService) {}
 
-	// Вместо этого
-	// @Get(":isMarried?")
-	//? вероятно это не правильно, нужно разбираться
-	@Get("{:isMarried}")
-	getUsers(
-		@Query("limit", new DefaultValuePipe(10), ParseIntPipe) limit: number,
-		@Query("page", new DefaultValuePipe(1), ParseIntPipe) page: number,
-		@Param() param: GetUserParamDto,
-	): string | CreateUserDto[] {
-		console.log("param", param);
+	@Get()
+	getUsers() {
 		return this.usersService.getAllUsers();
 	}
 
-	@Get(":id")
-	getUserById(
-		@Param("id", ParseIntPipe) id: number,
-	): CreateUserDto | undefined {
-		return this.usersService.getUserById(id);
-	}
-
 	@Post()
-	createUser(@Body() user: CreateUserDto): string {
-		// this.usersService.createUser(user);
-		console.log("user", user);
-		return `A new user has been created. ID: ${user.firstName}`;
-	}
-
-	@Patch()
-	updateUser(@Body() user: UpdateUserDto): string {
-		console.log("user", user);
-		return "User updated successfully";
+	createUser(@Body() user: CreateUserDto) {
+		this.usersService.createUser(user);
 	}
 }
