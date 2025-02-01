@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import type { IUser } from "./users.types";
+import { CreateUserDto } from "./dtos/create-user.dto";
 
 @Injectable()
 export class UsersService {
-	users: IUser[] = [
+	users: CreateUserDto[] = [
 		{
 			id: 1,
 			name: "Lisa",
@@ -27,15 +27,15 @@ export class UsersService {
 		},
 	];
 
-	getAllUsers(): IUser[] {
+	getAllUsers(): CreateUserDto[] {
 		return this.users;
 	}
 
-	getUserById(id: number): IUser | undefined {
+	getUserById(id: number): CreateUserDto | undefined {
 		return this.users.find((user) => user.id === id);
 	}
 
-	createUser(user: IUser) {
+	createUser(user: CreateUserDto) {
 		this.users.push(user);
 	}
 }
