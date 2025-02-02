@@ -5,10 +5,10 @@ export class Profile {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column({ type: "varchar", nullable: false, length: 100 })
+	@Column({ type: "varchar", nullable: true, length: 100 })
 	firstName: string;
 
-	@Column({ type: "varchar", nullable: false, length: 100 })
+	@Column({ type: "varchar", nullable: true, length: 100 })
 	lastName: string;
 
 	@Column({ type: "varchar", nullable: true, length: 10 })

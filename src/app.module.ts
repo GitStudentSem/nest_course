@@ -6,7 +6,7 @@ import { UsersModule } from "./users/users.module";
 import { AuthModule } from "./auth/auth.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { User } from "./users/user.entity";
-import { ProfileModule } from './profile/profile.module';
+import { ProfileModule } from "./profile/profile.module";
 
 @Module({
 	/** Внутренние использованные модули */
@@ -19,7 +19,8 @@ import { ProfileModule } from './profile/profile.module';
 			imports: [],
 			useFactory: () => ({
 				type: "postgres",
-				entities: [User],
+				// entities: [User],
+				autoLoadEntities: true,
 				synchronize: true,
 				host: "localhost",
 				port: 5432,
