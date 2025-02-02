@@ -24,7 +24,11 @@ export class User {
 	@Column({ type: "varchar", nullable: false, length: 100 })
 	password: string;
 
-	@OneToOne(() => Profile, { cascade: ["insert"], eager: true })
+	@OneToOne(
+		() => Profile,
+		(profile) => profile.user,
+		{ cascade: ["insert"] },
+	)
 	@JoinColumn()
 	profile?: Profile;
 
