@@ -29,7 +29,6 @@ export class User {
 		(profile) => profile.user,
 		{ cascade: ["insert"] },
 	)
-	@JoinColumn()
 	profile?: Profile;
 
 	@CreateDateColumn()
